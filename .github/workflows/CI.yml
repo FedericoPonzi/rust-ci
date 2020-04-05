@@ -1,3 +1,4 @@
+# Replace rust-ci with your binary name.
 name: CI
 
 on:
@@ -104,7 +105,8 @@ jobs:
       - name: Package
         shell: bash
         run: |
-          #strip target/${{ matrix.target }}/release/rust-ci
+          # TODO:
+          # strip target/${{ matrix.target }}/release/rust-ci
           cd target/${{ matrix.target }}/release          
           tar czvf ../../../rust-ci-${{ matrix.target }}.tar.gz rust-ci
           cd -
