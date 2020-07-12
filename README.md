@@ -13,6 +13,7 @@ In order to use this:
 * If you want to use the push-to-docker step:
   * Add your docker username and password in the secrets of the github repository.
   * Replace `federicoponzi/rust-ci` with the name of your repo/image.
+  * You can find the example docker image [here](https://hub.docker.com/repository/docker/federicoponzi/rust-ci)
 * If you don't want to use the docker step, you can just safely remove it.
   
 > The place that need updated are marked with an "UPDATEME" comment!
