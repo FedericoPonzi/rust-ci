@@ -86,7 +86,7 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          #UPDATE ME:
+          #UPDATEME: dockerhub repository name
           name: federicoponzi/rust-ci
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -122,7 +122,9 @@ jobs:
         run: |
           # TODO:
           # strip target/${{ matrix.target }}/release/rust-ci
+
           cd target/${{ matrix.target }}/release          
+          # UPDATEME: replace the string "rust-ci" with your binary's name.
           tar czvf ../../../rust-ci-${{ matrix.target }}.tar.gz rust-ci
           cd -
           
@@ -130,6 +132,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         # TODO: if any of the build step fails, the release should be deleted.
         with:
+            # UPDATEME: Replace "rust-ci" with your binary name but keep the star (*).
             files: 'rust-ci*'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

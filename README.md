@@ -15,6 +15,7 @@ In order to use this:
   * Replace `federicoponzi/rust-ci` with the name of your repo/image.
 * If you don't want to use the docker step, you can just safely remove it.
   
+> The place that need updated are marked with an "UPDATEME" comment!
 
 ### Then:
 
