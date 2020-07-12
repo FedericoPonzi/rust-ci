@@ -76,7 +76,22 @@ jobs:
         with:
           command: test
           args: --benches ${{ matrix.features }}
-  deploy:
+  # Publish latest and releases (e.g. tags with semver) on dockerhub.
+  docker-push-release-latest:
+    needs: [test]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@master
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          #UPDATE ME:
+          name: federicoponzi/rust-ci
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_names: true
+  create-release:
     name: deploy
     needs: [test]
     if: startsWith(github.ref, 'refs/tags/')
